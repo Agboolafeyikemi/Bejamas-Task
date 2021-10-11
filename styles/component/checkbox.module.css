@@ -1,0 +1,38 @@
+.checkboxHolder {
+  margin-bottom: 13%;
+}
+.hideBx {
+  display: none;
+}
+.formCheckbox {
+  text-transform: capitalize;
+  padding-left: 30px;
+  background-image: url("../../public/images/empty.svg");
+  background-position: left;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.checkboxHolder input[type="checkbox"]:checked + .form-checkbox {
+  background-image: url("../../public/images/checked.svg");
+}
+
+.checkboxHolder input[type="radio"]:checked + .form-checkbox {
+  background-image: url("../../public/images/checked.svg");
+}
+
+.topping {
+  margin-top: 0.3rem;
+  vertical-align: text-bottom;
+}
+.productListCategoryGroup {
+  padding: 12px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-line);
+}
+.productListCategoryG {
+  padding: 12px 0;
+  margin-bottom: 20px;
+  border-bottom: none;
+}

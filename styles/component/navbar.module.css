@@ -1,0 +1,87 @@
+.nav {
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  /* border-bottom: 1px solid var(--border-line); */
+  padding: 3% 0;
+  display: flex;
+  position: relative;
+  border-bottom: 4px solid var(--border-line);
+}
+
+.productCart {
+  align-self: center;
+  position: relative;
+}
+
+.navCartIcon {
+  height: 34px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.cartCounter {
+  display: table;
+  padding: 2px 5px;
+  background: var(--dark-back);
+  color: var(--white-color);
+  font-size: 10px;
+  position: absolute;
+  right: 1px;
+  bottom: -28px;
+}
+.cartHide {
+  display: none;
+}
+.productCartBagHide {
+  display: none;
+  width: 100%;
+  max-width: 300px;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  z-index: 3;
+  background: var(--white-color);
+  border: 1px solid var(--border-line);
+  padding: 10px;
+}
+
+.productCartBag {
+  width: 100%;
+  max-width: 300px;
+  position: absolute;
+  top: 102%;
+  right: 0;
+  z-index: 3;
+  background: var(--white-color);
+  border: 1px solid var(--border-line);
+  padding: 10px;
+}
+.btnTranspBack {
+  background: var(--white-color);
+  color: var(--dark-back);
+  width: 100%;
+  border: 1px solid var(--dark-back);
+  padding: 10px;
+  background: var(--dark-back);
+  color: var(--white-color);
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.clrFix {
+  clear: both;
+}
+
+.closeBtn {
+  width: 18px;
+  height: 18px;
+  display: table;
+  float: right;
+  margin-bottom: 5px;
+  background-image: url(../../public/images/close.svg);
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

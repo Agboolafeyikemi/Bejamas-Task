@@ -1,18 +1,30 @@
 import React from "react";
 import Image from "next/image";
-import Data from "../../data.json";
-import styles from "./top.module.css";
+import styles from "../../styles/component/top.module.css";
 import SampleImage from "../../public/images/SampleImage.png";
+import { useDataLayerValue } from "../../context-api/DataLayer";
+import { actionTypes } from "../../context-api/reducer";
 
 const Top = () => {
-  let productHeader = Data.products[Data.products.length - 1];
-  console.log(
-    `Data\n\n\n\n\n\n\n\n\n\n\n\n\n`,
-    Data.products.length - 1,
-    Data.products[Data.products.length - 1],
-    Data[20],
-    Data
-  );
+  const [{ products }] = useDataLayerValue();
+  let productHeader = {};
+  if (typeof products != "undefined") {
+    products.map((product) => {
+      return product?.details?.recommendations ? (productHeader = product) : "";
+    });
+  }
+
+  const [{ productCart }, dispatch] = useDataLayerValue();
+
+  const updateCart = () => {
+    let cartList = productCart;
+    cartList.push(productHeader);
+
+    dispatch({
+      type: actionTypes.UPDATE_CART,
+      productCart: cartList,
+    });
+  };
 
   return (
     <header className={styles.header}>
@@ -40,7 +52,12 @@ const Top = () => {
           ""
         )}
       </div>
-      <button className={styles.topProductTitleBtnMobile}>Add to Cart</button>
+      <button
+        onClick={() => updateCart()}
+        className={styles.topProductTitleBtnMobile}
+      >
+        Add to Cart
+      </button>
 
       {/* description */}
       <div className={styles.topProductSummaryBox}>

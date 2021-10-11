@@ -1,0 +1,25 @@
+.productBagTile {
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--border-line);
+  margin-bottom: 10px;
+  display: flex;
+  position: relative;
+}
+
+.productBagInfo {
+  flex: 2;
+}
+
+.productBagName {
+  font-size: 14px;
+}
+
+.productBagImageBox {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.productBagImageBox img {
+  width: 100%;
+  object-fit: cover;
+}
