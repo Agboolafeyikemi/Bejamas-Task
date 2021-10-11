@@ -2,53 +2,59 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/component/productlist.module.css";
 import { useDataLayerValue } from "../context-api/DataLayer";
 import { actionTypes } from "../context-api/reducer";
-import { Sort } from "../components/Aniations";
+import { Sort, SortMobile } from "../components/Aniations";
+import { useIsSmall } from "../helpers/mediaQuery";
 
 const ProductListHeader = () => {
   const [{ products, mobileFilterBag }, dispatch] = useDataLayerValue();
 
-  //   const handleMobileFilterView = () => {
-  //     if (
-  //       Math.max(window.innerWidth || document.documentElement.clientWidth) < 999
-  //     ) {
-  //       mobileFilterBag === false
-  //         ? dispatch({
-  //             type: actionTypes.MOBILE_FILTER_BAG,
-  //             mobileFilterBag: true,
-  //           })
-  //         : dispatch({
-  //             type: actionTypes.MOBILE_FILTER_BAG,
-  //             mobileFilterBag: false,
-  //           });
-  //     }
-  //   };
+  //check for mobile view
+  const isSmall = useIsSmall();
+  const handleMobileFilterView = () => {
+    if (
+      Math.max(window.innerWidth || document.documentElement.clientWidth) < 999
+    ) {
+      mobileFilterBag === false
+        ? dispatch({
+            type: actionTypes.MOBILE_FILTER_BAG,
+            mobileFilterBag: true,
+          })
+        : dispatch({
+            type: actionTypes.MOBILE_FILTER_BAG,
+            mobileFilterBag: false,
+          });
+    }
+  };
 
-  //   useEffect(() => {
-  //     if (
-  //       Math.max(window.innerWidth || document.documentElement.clientWidth) < 999
-  //     ) {
-  //       dispatch({
-  //         type: actionTypes.MOBILE_FILTER_BAG,
-  //         mobileFilterBag: false,
-  //       });
-  //     }
-  //   }, []);
+  useEffect(() => {
+    if (
+      Math.max(window.innerWidth || document.documentElement.clientWidth) < 999
+    ) {
+      dispatch({
+        type: actionTypes.MOBILE_FILTER_BAG,
+        mobileFilterBag: false,
+      });
+    }
+  }, []);
 
-  //   window.addEventListener("resize", () => {
-  //     if (
-  //       Math.max(window.innerWidth || document.documentElement.clientWidth) < 999
-  //     ) {
-  //       dispatch({
-  //         type: actionTypes.MOBILE_FILTER_BAG,
-  //         mobileFilterBag: false,
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: actionTypes.MOBILE_FILTER_BAG,
-  //         mobileFilterBag: true,
-  //       });
-  //     }
-  //   });
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", () => {
+      if (
+        Math.max(window.innerWidth || document.documentElement.clientWidth) <
+        999
+      ) {
+        dispatch({
+          type: actionTypes.MOBILE_FILTER_BAG,
+          mobileFilterBag: false,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.MOBILE_FILTER_BAG,
+          mobileFilterBag: true,
+        });
+      }
+    });
+  }
 
   const [isAscending, setIsAscending] = useState(false);
   const sortAlphabetically = () => {
@@ -113,11 +119,10 @@ const ProductListHeader = () => {
 
         {/* mobile tap filter */}
         <div
-          //   onClick={handleMobileFilterView}
+          onClick={handleMobileFilterView}
           className={styles.productListMobileSort}
         >
-          {/* <Image src={SettingsIcon} alt="mobile settings" /> */}
-          <Sort />
+          <SortMobile />
         </div>
       </div>
     </header>

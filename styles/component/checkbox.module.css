@@ -14,11 +14,11 @@
   cursor: pointer;
 }
 
-.checkboxHolder input[type="checkbox"]:checked + .form-checkbox {
+.checkboxHolder input[type="checkbox"]:checked + .formCheckbox {
   background-image: url("../../public/images/checked.svg");
 }
 
-.checkboxHolder input[type="radio"]:checked + .form-checkbox {
+.checkboxHolder input[type="radio"]:checked + .formCheckbox {
   background-image: url("../../public/images/checked.svg");
 }
 
@@ -35,4 +35,28 @@
   padding: 12px 0;
   margin-bottom: 20px;
   border-bottom: none;
+}
+.productListCategoryTitle {
+  justify-content: space-between;
+}
+
+.productListCategoryTitle svg {
+
+  display: none;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .productListCategoryTitle svg {
+    display: block;
+  }
+  .categoryMobile {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+  }
+  .checkboxHolder {
+    margin-bottom: 8%;
+    margin-left: 4%;
+  }
 }

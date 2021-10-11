@@ -4,6 +4,7 @@ import styles from "../../styles/component/top.module.css";
 import SampleImage from "../../public/images/SampleImage.png";
 import { useDataLayerValue } from "../../context-api/DataLayer";
 import { actionTypes } from "../../context-api/reducer";
+import { useIsSmall } from "../../helpers/mediaQuery";
 
 const Top = () => {
   const [{ products }] = useDataLayerValue();
@@ -13,7 +14,8 @@ const Top = () => {
       return product?.details?.recommendations ? (productHeader = product) : "";
     });
   }
-
+  //check for mobile view
+  const isSmall = useIsSmall();
   const [{ productCart }, dispatch] = useDataLayerValue();
 
   const updateCart = () => {
@@ -35,14 +37,23 @@ const Top = () => {
 
       {/* featured image */}
       <div className={styles.topProductBox}>
-        <Image
-          //   src={productHeader?.image?.src}
-          src={SampleImage}
-          alt={productHeader?.image?.alt}
-          height={553}
-          width={1290}
-          layout="responsive"
-        />
+        {isSmall ? (
+          <Image
+            src={SampleImage}
+            alt={productHeader?.image?.alt}
+            height={289}
+            width={382}
+            layout="responsive"
+          />
+        ) : (
+          <Image
+            src={SampleImage}
+            alt={productHeader?.image?.alt}
+            height={553}
+            width={1290}
+            layout="responsive"
+          />
+        )}
 
         {productHeader?.featured ? (
           <div className={styles.topProductTag}>
@@ -80,6 +91,7 @@ const Top = () => {
               (recommended, keyId) => {
                 return (
                   <div key={keyId} className={styles.recommendedPicContainer}>
+                    {useIsSmall}
                     <div className={styles.imageBox}>
                       <Image
                         src={recommended?.src}

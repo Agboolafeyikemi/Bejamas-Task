@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import JsonData from "../data.json";
 
 export const initialState = {

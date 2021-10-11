@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { Cancel } from "../Aniations/Cancel";
+import Cancel from "../Aniations/Cancel";
 import CheckBox from "../CheckBox";
-
 import styles from "../../styles/component/checkbox.module.css";
 
-const CategoryFilter = () => {
-  const [categoryFilter, setCategoryFilter] = useState([]);
-
+const CategoryFilter = ({ handleMobileFilterView, setCategoryFilterList }) => {
   const categories = [
     "People",
     "Premium",
@@ -16,17 +13,19 @@ const CategoryFilter = () => {
     "Cities",
     "Nature",
   ];
-  const handleClick = (index) => {
-    console.log(index, "is clicked");
-  };
+
   return (
-    <div className={styles.checkboxGroup}>
-      <h4>Category</h4>
+    <div className={styles.productListCategoryTitle}>
+      <div className={styles.categoryMobile}>
+        <h4>Category</h4>
+
+        <Cancel onClick={() => handleMobileFilterView()} />
+      </div>
       <div className={styles.productListCategoryGroup}>
         {categories?.map((category, index) => (
           <CheckBox
             key={index}
-            func={setCategoryFilter}
+            func={setCategoryFilterList}
             name={category}
             value={category}
             count={index}

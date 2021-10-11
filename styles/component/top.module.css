@@ -136,6 +136,51 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .topProductTitleBtnMobile {
     display: block;
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--dark-back);
+    padding: 10px;
+    background: var(--dark-back);
+    color: var(--white-color);
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.07em;
+  }
+  .topProductTitleBtn {
+    display: none;
+  }
+  .topProductTitle {
+    font-size: 1.5rem;
+  }
+  .topProductTag p {
+    font-size: 15px;
+  }
+  .topProductSummaryBox {
+    flex-direction: column;
+  }
+  .topProductSummaryBox {
+    align-items: flex-start;
+  }
+  .topProductContainer {
+    margin: 0;
+  }
+
+  .topProductSummaryBox > * {
+    text-align: left;
+    align-items: flex-start;
+  }
+  .aboutProduct {
+    margin-top: 5%;
+    padding-bottom: 4%;
+  }
+  .productDetail h3,
+  .productDetail p {
+    text-align: left;
+    font-size: 18px;
+    line-height: 20px;
   }
 }
 
@@ -164,16 +209,6 @@
   .aboutProduct {
     font-size: 22px;
     line-height: 24px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .product-summary-box {
-    flex-direction: column;
-  }
-
-  .product-summary-box > * {
-    text-align: left !important;
   }
 }
 

@@ -1,8 +1,7 @@
 .nav {
   margin-bottom: 2rem;
   justify-content: space-between;
-  /* border-bottom: 1px solid var(--border-line); */
-  padding: 3% 0;
+  padding: 2% 0;
   display: flex;
   position: relative;
   border-bottom: 4px solid var(--border-line);
@@ -12,7 +11,9 @@
   align-self: center;
   position: relative;
 }
-
+.logoBox {
+  margin-top: 2%;
+}
 .navCartIcon {
   height: 34px;
   cursor: pointer;
@@ -84,4 +85,10 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .nav {
+    margin-bottom: 0.5rem;
+  }
 }

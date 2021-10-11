@@ -8,7 +8,6 @@ const CheckBox = (props) => {
 
   //destructure
   const { name, count, value, func } = props;
-  console.log(`func\n\n\n\n\n\n\n\n\n`, name, count, value, func);
   return (
     <div className={styles.checkboxHolder}>
       <input

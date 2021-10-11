@@ -1,8 +1,10 @@
 .productList {
   margin-bottom: 35px;
-  gap: 20px;
   display: flex;
-  position: relative;
+  justify-content: space-between;
+}
+.productList h4 {
+  margin-top: 0%;
 }
 .productListCategoryTitle {
   display: flex;
@@ -15,21 +17,27 @@
   width: 100%;
   max-width: 200px;
 }
+.productListCategoryHide {
+  display: none;
+}
 .productItemsList {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: -5%;
+}
+.productListCategoryC {
+  width: 33%;
 }
 
 .productItem {
-  width: 100%;
+  width: 30%;
   overflow-x: hidden;
+  margin-bottom: 2%;
 }
 
 .productItemImage {
-  background: var(--border-line);
-  width: 70%;
+  width: 100%;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -46,7 +54,7 @@
   bottom: -40px;
   left: 0;
   transition: 0.2s ease;
-  width: 100%;
+  width: 90%;
   border: 1px solid var(--dark-back);
   padding: 10px;
   background: var(--dark-back);
@@ -94,8 +102,8 @@
   margin-top: 3%;
 }
 .productListTypeName {
-  font-size: minmax(14px, 18px);
-  line-height: 150%;
+  font-size: 18px;
+  line-height: 33px;
 }
 .slashPad {
   padding: minmax(0 10px, 0 5px);
@@ -191,4 +199,61 @@
 
 .nextHolder {
   transform: rotate(-90deg);
+}
+.productListCategoryCHidebx {
+  display: none;
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .productListSort,
+  .priceOrder {
+    display: none;
+  }
+  .productList {
+    display: block;
+    position: relative;
+  }
+  .productListMobileSort {
+    display: block;
+    border: none;
+  }
+  .productListCategoryC {
+    width: 100%;
+    background: var(--white-color);
+    box-shadow: 0px 3px 12px rgb(0 0 0 / 30%);
+    padding: 30px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+  }
+  .productItemsList {
+    display: block;
+    margin-right: 0;
+  }
+  .productItem {
+    width: auto;
+
+    margin-bottom: 5%;
+  }
+  .productCartBtn {
+    bottom: 0px;
+    left: 0;
+  }
+  .productItemImage {
+    background: var(--border-line);
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .productItemImage > div {
+    display: block !important;
+  }
+  .productListHeader {
+    margin-bottom: 6%;
+  }
+  .productCartBtn {
+    width: 100%;
+  }
 }

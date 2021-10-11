@@ -1,31 +1,22 @@
 import React, { useState } from "react";
-import { Cancel } from "../Aniations/Cancel";
 import styles from "../../styles/component/checkbox.module.css";
 import RadioCheckBox from "../RadioCheckBox";
 
-const PriceRange = () => {
-  const [priceFilter, setPriceFilter] = useState([]);
+const PriceRange = ({ setPriceFilterList }) => {
   const priceRange = [
-    "Lower than $20",
-    "$20 - $100",
-    "$100 - $200",
-    "More than $200",
+    { price: "Lower than $20", index: 101 },
+    { price: "$20 - $100", index: 102 },
+    { price: "$100 - $200", index: 103 },
+    { price: "More than $200", index: 104 },
   ];
   return (
-    // <aside>
-    //   <div className={styles.productListCategoryTitle}>
-    //     <div className={styles.category}>Category</div>
-    //     <Cancel />
-    //   </div>
-    // </aside>
-
-    <div className={styles.checkboxGroup}>
+    <div className={styles.productListCategoryTitle}>
       <h4>Price range</h4>
       <div className={styles.productListCategoryG}>
-        {priceRange?.map((price, index) => (
+        {priceRange?.map(({ price, index }) => (
           <RadioCheckBox
             key={index}
-            func={setPriceFilter}
+            func={setPriceFilterList}
             name="price"
             value={price}
             text={price}

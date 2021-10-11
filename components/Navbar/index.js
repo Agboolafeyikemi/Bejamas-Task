@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
-
+import { useIsSmall } from "../../helpers/mediaQuery";
 import { useDataLayerValue } from "../../context-api/DataLayer";
 import { actionTypes } from "../../context-api/reducer";
 import CartItem from "../CartItem";
-import Logo from "../../public/images/Logo.png";
-import Cart from "../../public/images/cart.png";
-// import { Cart } from "../Aniations";
+
+import { Cart, CartMobile, Logo, LogoMobile } from "../Aniations";
 import styles from "../../styles/component/navbar.module.css";
 
 const Navbar = () => {
   const [isCartVisible, setIsCartVisible] = useState(true);
-
+  //check for mobile view
+  const isSmall = useIsSmall();
   const toggleCartBag = () => {
-    console.log(`clicked\n\n\n\n\n\n\n`);
     return isCartVisible === false
       ? setIsCartVisible(true)
       : setIsCartVisible(false);
@@ -29,17 +28,26 @@ const Navbar = () => {
   };
   return (
     <section className={styles.nav}>
-      <Image src={Logo} alt="logo" height={25.22} width={159} />
-      <div className={styles.productCart}>
-        <div className={styles.navCartIcon}>
-          <Image
-            src={Cart}
-            alt="cart"
-            height={54}
-            width={54}
-            onClick={() => toggleCartBag()}
-          />
+      {isSmall ? (
+        <div className={styles.logoBox}>
+          {" "}
+          <LogoMobile />{" "}
         </div>
+      ) : (
+        <div className={styles.logoBox}>
+          <Logo />
+        </div>
+      )}
+      <div className={styles.productCart}>
+        {isSmall ? (
+          <div className={styles.navCartIcon}>
+            <CartMobile />
+          </div>
+        ) : (
+          <div className={styles.navCartIcon}>
+            <Cart />
+          </div>
+        )}
         <div
           className={
             productCart.length > 0 ? styles.cartCounter : styles.cartHide
